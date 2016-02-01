@@ -1,10 +1,24 @@
 <div>
-	<form>
-		<input type="text" placeholder="Name" ng-model="post.name">
-		<input type="text" placeholder="Description" ng-model="post.description">
-		<input type="text" placeholder="URL" ng-model="post.url">
-		<button ng-click="savePost(post)">Save post</button>
-	</form>
+    <form>
+        <!--        The Post Name-->
+        <div class="form-group">
+            <label class="control-label" for="focusedInput">Post Name</label>
+            <input type="text" ng-model="post.name" class="form-control">
+        </div>
+        <!--        The Post Description-->
+        <div class="form-group">
+            <label class="control-label" for="focusedInput">Post Description</label>
+            <input type="text" ng-model="post.description" class="form-control">
+        </div>
+        <!--        The Post URL-->
+        <div class="form-group">
+            <label class="control-label" for="focusedInput">Post URL</label>
+            <input type="text" ng-model="post.url" class="form-control">
+        </div>
+        <br>
+        <!--        Save Post-->
+        <button ng-click="savePost(post)" class="btn btn-success btn-block">Save Post</button>
+    </form>
 </div>
 <!--Repeats through all the posts that are found-->
 <div ng-repeat="post in posts">
