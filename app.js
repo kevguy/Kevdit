@@ -40,4 +40,12 @@ app.controller('MainController', function ($scope, $firebase, Posts) {
 		post.url = "";
 
 	}
+
+    //Deleting a post
+    $scope.deletePost = function (post) {
+        //Getting the right URL
+		var postForDeletion = new Firebase('https://kevdit.firebaseio.com/' + post.$id);
+        //Removing it from Firebase
+        postForDeletion.remove();
+    }
 });
