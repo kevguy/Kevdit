@@ -32,14 +32,24 @@ app.controller('MainController', function ($scope, $firebase, Posts) {
 		Posts.$add({
 			name: post.name,
 			description: post.description,
-			url: post.url
+			url: post.url,
+			votes: 0
 		})
 
+        //Resetting all the values
 		post.name = "";
 		post.description = "";
 		post.url = "";
 
 	}
+
+    //Adding a vote
+    $scope.addVote = function (post) {
+        //Increment the number
+        post.votes++;
+        //Save to the Firebase
+        Posts.$save(post);
+    }
 
     //Deleting a post
     $scope.deletePost = function (post) {
