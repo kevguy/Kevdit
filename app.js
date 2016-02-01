@@ -31,7 +31,7 @@ app.controller('MainController', function ($scope, $firebase, Posts) {
     $scope.savePost = function (post) {
 		Posts.$add({
 			name: post.name,
-			dscription: post.description,
+			description: post.description,
 			url: post.url
 		})
 
