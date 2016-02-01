@@ -29,18 +29,22 @@ app.controller('MainController', function ($scope, $firebase, Posts) {
 
     //The function that runs when the user saves a post
     $scope.savePost = function (post) {
-		Posts.$add({
-			name: post.name,
-			description: post.description,
-			url: post.url,
-			votes: 0
-		})
+    	if (post.name && post.description && post.url){
+			Posts.$add({
+				name: post.name,
+				description: post.description,
+				url: post.url,
+				votes: 0
+			})
 
-        //Resetting all the values
-		post.name = "";
-		post.description = "";
-		post.url = "";
-
+	        //Resetting all the values
+			post.name = "";
+			post.description = "";
+			post.url = "";
+		}
+		else {
+			alert('Sorry bruh, you need all of those info to be filled!');
+		}
 	}
 
     //Adding a vote
