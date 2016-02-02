@@ -50,6 +50,7 @@ app.controller('MainController', function ($scope, $firebase, Posts) {
 			post.url = "";
 		}
 		else {
+            //An alert to tell the user to log in or put something in all the fields
 			alert('Sorry bruh, make sure y0ou have all the info filled and you are signed in!');
 		}
 	}
@@ -79,8 +80,7 @@ app.controller('MainController', function ($scope, $firebase, Posts) {
     			user: $scope.authData.twitter.username,
     			text: comment.text
     		});
-    	}
-    	else {
+    	} else {
     		alert('You need to be logged in before doing that!');
     	}
 
@@ -92,11 +92,13 @@ app.controller('MainController', function ($scope, $firebase, Posts) {
     	commentForDeletion.remove();
     }
 
-    $scope.login = function() {
+    //Logging the user in    
+	$scope.login = function () {
         //Creating a refrence URL with Firebase
     	var ref = new Firebase('https://kevdit.firebaseio.com/');
         //Doing the OAuth popup
-    	ref.authWithOAuthPopup('twitter', function(error, authData){
+    	ref.authWithOAuthPopup('twitter', function(error, authData) {
+            //If there is an error
     		if (error){
     			alert('Sorry bruh, there was an error.');
     		}
