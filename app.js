@@ -62,4 +62,21 @@ app.controller('MainController', function ($scope, $firebase, Posts) {
         //Removing it from Firebase
         postForDeletion.remove();
     }
+
+    $scope.login = function() {
+        //Creating a refrence URL with Firebase
+    	var ref = new Firebase('https://kevdit.firebaseio.com/');
+        //Doing the OAuth popup
+    	ref.authWithOAuthPopup('twitter', function(error, authData){
+    		if (error){
+    			alert('Sorry bruh, there was an error.');
+    		}
+            //If the user is logged in correctly
+    		else {
+    			alert('You were logged in successfully.');
+    		}
+            //Set the authData we get to a global variable that can be used
+    		$scope.authData = authData;
+    	});
+    }
 });
