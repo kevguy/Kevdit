@@ -83,6 +83,13 @@ app.controller('MainController', function ($scope, $firebase, Posts) {
     	else {
     		alert('You need to be logged in before doing that!');
     	}
+
+    	comment.text = '';
+    }
+
+    $scope.removeComment = function(post, comment) {
+    	var commentForDeletion = new Firebase('https://kevdit.firebaseio.com/' + post.$id + '/comments/' + comment.$id);
+    	commentForDeletion.remove();
     }
 
     $scope.login = function() {
