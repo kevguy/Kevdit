@@ -70,6 +70,21 @@ app.controller('MainController', function ($scope, $firebase, Posts) {
         postForDeletion.remove();
     }
 
+    $scope.addComment = function (post, comment) {
+    	if ($scope.authData) {
+    		var ref = new Firebase('https://kevdit.firebaseio.com/' + post.$id + '/comments');
+    		var sync = $firebase(ref);
+    		$scope.comments = sync.$asArray();
+    		$scope.comments.$add({
+    			user: $scope.authData.twitter.username,
+    			text: comment.text
+    		});
+    	}
+    	else {
+    		alert('You need to be logged in before doing that!');
+    	}
+    }
+
     $scope.login = function() {
         //Creating a refrence URL with Firebase
     	var ref = new Firebase('https://kevdit.firebaseio.com/');
