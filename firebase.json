@@ -1,0 +1,9 @@
+{
+  "firebase": "kevdit",
+  "public": "public",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
